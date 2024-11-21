@@ -4,7 +4,7 @@ import { TextInput } from 'react-native-paper'; // Utilisation de react-native-p
 import { useForm, Controller } from 'react-hook-form';
 import { Ionicons } from '@expo/vector-icons'; // Utilisation d'Ionicons pour les icônes des yeux
 
-const SignInScreen = ({ navigation }) => {
+const NextUpScreen = ({ navigation }) => {
   const { control, handleSubmit } = useForm();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -69,12 +69,30 @@ const SignInScreen = ({ navigation }) => {
             </View>
           )}
         />
-        
+        <Controller
+          name="xxxxxxxxxxxxxx"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value } }) => (
+            <View style={styles.passwordContainer}>
+              <TextInput
+                label="xxxxxxxxxxxxxx"
+                value={value}
+                onChangeText={onChange}
+                secureTextEntry={!showConfirmPassword}
+                style={styles.inputField}
+              />
+              <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)} style={styles.eyeIcon}>
+                <Ionicons name={showConfirmPassword ? "eye-off" : "eye"} size={20} color="gray" />
+              </TouchableOpacity>
+            </View>
+          )}
+        />
       </View>
 
       {/* Bouton "S'inscrire" */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('NextIn')}>
-        <Text style={styles.buttonText}>Connectez</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('UserInfo')}>
+        <Text style={styles.buttonText}>Suivant</Text>
       </TouchableOpacity>
 
       <Text style={styles.secondaryButtonText}>En vous inscrivant, vous acceptez les Conditons{"\n"}Générales et la Politique de Confidentialité {"\n"}d'utilisation de cette application</Text>
@@ -162,4 +180,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignInScreen;
+export default NextUpScreen;
